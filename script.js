@@ -1,4 +1,4 @@
-// Exercise 3: Say Hello??
+// Exercise 3: Say Hello
 const helloBtn = document.querySelector('#helloBtn');
 const statusBox = document.querySelector('#status');
 
@@ -9,16 +9,16 @@ helloBtn.addEventListener('click', () => {
   statusBox.style.color = 'var(--accent)';
 });
 
-// Exercise 3: Toggle Theme (Dark / Light Mode) ???????????? LocalStorage
+// Exercise 3: Toggle Theme (Dark / Light Mode)  LocalStorage
 const themeToggleBtn = document.querySelector('#themeToggleBtn');
 
 function applyTheme(isDark) {
   if (isDark) {
     document.body.classList.add('dark-mode');
-    themeToggleBtn.textContent = '?? Light Mode';
+    themeToggleBtn.textContent = ' Light Mode';
   } else {
     document.body.classList.remove('dark-mode');
-    themeToggleBtn.textContent = '?? Dark Mode';
+    themeToggleBtn.textContent = ' Dark Mode';
   }
 }
 
@@ -33,5 +33,5 @@ themeToggleBtn.addEventListener('click', () => {
   const newThemeState = !isCurrentlyDark;
   
   applyTheme(newThemeState);
-  localStorage.setItem('theme', newThemeState ? 'dark' : 'light');
+  localStorage.setItem('theme', newThemeState  'dark' : 'light');
 });
