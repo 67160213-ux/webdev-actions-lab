@@ -1,6 +1,231 @@
-body { font-family: system-ui, sans-serif; background: #eef4fb;
-       margin: 0; min-height: 100vh; display: grid; place-items: center; }
-.card { background: white; padding: 40px; border-radius: 18px;
-        box-shadow: 0 12px 32px #1e3a5f20; text-align: center; }
-button { background: #1769aa; color: white; border: 0;
-         padding: 12px 22px; border-radius: 8px; cursor: pointer; }
+:root {
+  --bg-color: #f1f5f9;
+  --card-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --border: #e2e8f0;
+  --badge-bg: #dbeafe;
+  --badge-text: #1e40af;
+  --status-bg: #f8fafc;
+  --status-border: #cbd5e1;
+  --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+}
+
+body.dark-mode {
+  --bg-color: #0b0f19;
+  --card-bg: #151d30;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --primary: #38bdf8;
+  --primary-hover: #0ea5e9;
+  --border: #1e293b;
+  --badge-bg: #1e293b;
+  --badge-text: #38bdf8;
+  --status-bg: #0d1424;
+  --status-border: #334155;
+  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Thai", sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 40px 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: var(--card-shadow);
+  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-card {
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  margin-bottom: 14px;
+  letter-spacing: 0.3px;
+}
+
+h1 {
+  font-size: 1.85rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.student-info {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.welcome-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+
+.status-box {
+  background: var(--status-bg);
+  border: 1px dashed var(--status-border);
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.primary-btn {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+body.dark-mode .primary-btn {
+  color: #0b0f19;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.secondary-btn:hover {
+  background: var(--border);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.card-header .icon {
+  font-size: 1.4rem;
+}
+
+.card-header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.content-card p {
+  color: var(--text-muted);
+  font-size: 0.98rem;
+}
+
+.section-desc {
+  margin-bottom: 12px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+}
+
+.contact-item a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 8px;
+}

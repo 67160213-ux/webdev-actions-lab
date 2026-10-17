@@ -24,10 +24,11 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
+      # Challenge: Pre-deployment check
       - name: Verify index.html exists
         run: |
           test -f index.html
-          echo "Verified: index.html exists!"
+          echo "Verified: index.html is present and ready for deployment."
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

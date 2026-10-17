@@ -3,16 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My GitHub Pages Lab</title>
+  <title>My Web Development Lab - Natakorn Khawyai (67160213)</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card">
-    <h1>My Web Development Lab</h1>
-    <p>ชื่อ: Natakorn Khawyai | รหัสนิสิต: 67160213</p>
-    <p id="status">Ready to deploy</p>
-    <button id="helloBtn">Say Hello</button>
-  </main>
+  <div class="container">
+    <!-- Header / Hero Section (Exercise 1) -->
+    <header class="card hero-card">
+      <div class="badge">?? CI/CD Automated Deployment</div>
+      <h1>My Web Development Lab</h1>
+      <p class="student-info">
+        ????: <strong>Natakorn Khawyai</strong> | ?????????: <strong>67160213</strong>
+      </p>
+      <p class="welcome-text">
+        ????????????????????????????????? GitHub Actions & GitHub Pages
+      </p>
+      <div id="status" class="status-box">Status: Ready to deploy</div>
+      <div class="btn-group">
+        <button id="helloBtn" class="btn primary-btn">?? Say Hello</button>
+        <button id="themeToggleBtn" class="btn secondary-btn">?? Dark Mode</button>
+      </div>
+    </header>
+
+    <!-- Exercise 2: Section 1 - About Me -->
+    <section class="card content-card" id="about">
+      <div class="card-header">
+        <span class="icon">??</span>
+        <h2>About Me</h2>
+      </div>
+      <p>
+        ?????????? ?? <strong>Natakorn Khawyai</strong> ???????????????????????? ???????????????????????????????????????????????????????? <strong>CI/CD (Continuous Integration & Continuous Deployment)</strong> ???? <strong>GitHub Actions</strong> ?????????????????????????? <strong>GitHub Pages</strong> ?????????????????????? Source Code ?????? Git Repository
+      </p>
+    </section>
+
+    <!-- Exercise 2: Section 2 - Skills -->
+    <section class="card content-card" id="skills">
+      <div class="card-header">
+        <span class="icon">??</span>
+        <h2>Skills & Technologies</h2>
+      </div>
+      <p class="section-desc">????????????????????????????????????????:</p>
+      <div class="skills-grid">
+        <span class="skill-tag">HTML5 (Semantic Web)</span>
+        <span class="skill-tag">CSS3 (Modern & Responsive)</span>
+        <span class="skill-tag">JavaScript (ES6+)</span>
+        <span class="skill-tag">Git Version Control</span>
+        <span class="skill-tag">GitHub Actions CI/CD</span>
+        <span class="skill-tag">GitHub Pages Deployment</span>
+      </div>
+    </section>
+
+    <!-- Exercise 2: Section 3 - Contact -->
+    <section class="card content-card" id="contact">
+      <div class="card-header">
+        <span class="icon">??</span>
+        <h2>Contact Information</h2>
+      </div>
+      <div class="contact-list">
+        <div class="contact-item">
+          <span class="contact-icon">??</span>
+          <span><strong>Email:</strong> <a href="mailto:67160213@go.buu.ac.th">67160213@go.buu.ac.th</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">??</span>
+          <span><strong>GitHub:</strong> <a href="https://github.com/67160213-ux" target="_blank" rel="noopener">67160213-ux</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-icon">??</span>
+          <span><strong>Repository:</strong> <a href="https://github.com/67160213-ux/webdev-actions-lab" target="_blank" rel="noopener">webdev-actions-lab</a></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>? 2026 Natakorn Khawyai (67160213). Automated with GitHub Actions CI/CD.</p>
+    </footer>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
