@@ -1,23 +1,37 @@
-// Exercise 3: ???? Say Hello ???????????????????
+// Exercise 3: ???? Say Hello ??????????????????????????
 const helloBtn = document.querySelector('#helloBtn');
 const statusBox = document.querySelector('#status');
 
 helloBtn.addEventListener('click', () => {
-  statusBox.textContent = '?? Hello from Natakorn Khawyai (67160213)! Website updated via CI/CD.';
-  statusBox.style.borderColor = 'var(--primary)';
-  statusBox.style.fontWeight = 'bold';
+  statusBox.textContent = '?? ??????????! ?????????????????????? ???? ??????? (67160213)';
+  statusBox.style.borderColor = 'var(--accent)';
+  statusBox.style.backgroundColor = 'var(--badge-bg)';
+  statusBox.style.color = 'var(--accent)';
 });
 
-// Exercise 3: ???? Toggle Theme (Dark / Light Mode)
+// Exercise 3: ???? Toggle Theme (Dark / Light Mode) ???????????? LocalStorage
 const themeToggleBtn = document.querySelector('#themeToggleBtn');
 
-themeToggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  
-  const isDark = document.body.classList.contains('dark-mode');
+function applyTheme(isDark) {
   if (isDark) {
+    document.body.classList.add('dark-mode');
     themeToggleBtn.textContent = '?? Light Mode';
   } else {
+    document.body.classList.remove('dark-mode');
     themeToggleBtn.textContent = '?? Dark Mode';
   }
+}
+
+// ????????????????????????????? (?????)
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') {
+  applyTheme(true);
+}
+
+themeToggleBtn.addEventListener('click', () => {
+  const isCurrentlyDark = document.body.classList.contains('dark-mode');
+  const newThemeState = !isCurrentlyDark;
+  
+  applyTheme(newThemeState);
+  localStorage.setItem('theme', newThemeState ? 'dark' : 'light');
 });
