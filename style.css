@@ -1,278 +1,731 @@
+/* ==========================================================================
+   KAMEN RIDER DESIGN SYSTEM // TOKUSATSU MECHA HUD ARCHITECTURE
+   Aesthetic: High-Tech Cyber-Hero / Driver Interface / Armor Plating
+   Design System: Rising Hopper (Default) & Hazard Mode (Dark Theme)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,500;0,600;0,700;1,700&family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=swap');
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS (RISING HOPPER FORM - DEFAULT)
+   -------------------------------------------------------------------------- */
 :root {
-  --bg-color: #f1f5f9;
-  --card-bg: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --accent: #2563eb;
-  --accent-hover: #1d4ed8;
-  --border-color: #e2e8f0;
-  --badge-bg: #eff6ff;
-  --badge-text: #1d4ed8;
-  --status-bg: #f8fafc;
-  --status-border: #94a3b8;
-  --tag-bg: #e2e8f0;
-  --tag-text: #1e293b;
-  --card-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  /* Carbon Fiber & Mecha Chassis */
+  --bg-void: #06090E;
+  --bg-carbon: #0B0F17;
+  --bg-slate: #121824;
+  --bg-card: rgba(16, 23, 35, 0.88);
+  --bg-card-inset: rgba(9, 13, 20, 0.92);
+
+  /* Kamen Rider Zero-One High-Visibility Luminescence */
+  --accent-primary: #CCFF00;             /* Neon Lime Yellow */
+  --accent-primary-alt: #99E600;
+  --accent-primary-dim: rgba(204, 255, 0, 0.15);
+  --accent-primary-glow: rgba(204, 255, 0, 0.65);
+  --accent-primary-bright: #E6FF66;
+
+  /* Secondary Cyber HUD Accents */
+  --accent-cyan: #00E5FF;                /* Cybernetic Cyan */
+  --accent-cyan-dim: rgba(0, 229, 255, 0.12);
+  --accent-cyan-glow: rgba(0, 229, 255, 0.55);
+
+  --accent-crimson: #FF0055;             /* Energy Crimson Warning */
+  --accent-crimson-glow: rgba(255, 0, 85, 0.6);
+
+  /* Chrome & Titanium Polished Metals */
+  --chrome-light: #F0F4F8;
+  --chrome-mid: #94A3B8;
+  --chrome-dark: #334155;
+  --chrome-grad: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 35%, #64748B 70%, #1E293B 100%);
+  --gold-grad: linear-gradient(135deg, #FFE066 0%, #CCFF00 50%, #88AA00 100%);
+
+  /* High-Contrast Readout Typography */
+  --text-white: #F8FAFC;
+  --text-primary: #E2E8F0;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-code: #A7F3D0;
+
+  /* Armor Plate Geometry (Chamfered Angles) */
+  --armor-clip: polygon(0 16px, 16px 0, calc(100% - 16px) 0, 100% 16px, 100% calc(100% - 16px), calc(100% - 16px) 100%, 16px 100%, 0 calc(100% - 16px));
+  --btn-clip-primary: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  --btn-clip-secondary: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  --tag-clip: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  --bar-clip: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+
+  /* Borders & Shadows */
+  --border-armor: rgba(204, 255, 0, 0.35);
+  --border-subtle: rgba(0, 229, 255, 0.2);
+  --border-dark: rgba(148, 163, 184, 0.15);
+  --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 25px var(--accent-primary-dim);
 }
 
+/* --------------------------------------------------------------------------
+   2. HAZARD / ARK BERSERK FORM (DARK MODE SHIFT)
+   -------------------------------------------------------------------------- */
 body.dark-mode {
-  --bg-color: #0b0f19;
-  --card-bg: #151d30;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --accent: #38bdf8;
-  --accent-hover: #0ea5e9;
-  --border-color: #1e293b;
-  --badge-bg: #1e293b;
-  --badge-text: #38bdf8;
-  --status-bg: #0d1424;
-  --status-border: #334155;
-  --tag-bg: #1e293b;
-  --tag-text: #cbd5e1;
-  --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+  --bg-void: #050205;
+  --bg-carbon: #0A050A;
+  --bg-slate: #150B14;
+  --bg-card: rgba(20, 10, 18, 0.9);
+  --bg-card-inset: rgba(12, 5, 11, 0.94);
+
+  /* Kamen Rider Ark / Hazard Crimson Luminescence */
+  --accent-primary: #FF003C;             /* Blood Laser Crimson */
+  --accent-primary-alt: #CC002F;
+  --accent-primary-dim: rgba(255, 0, 60, 0.18);
+  --accent-primary-glow: rgba(255, 0, 60, 0.7);
+  --accent-primary-bright: #FF4D73;
+
+  /* Secondary Cyber Violet */
+  --accent-cyan: #A800FF;                /* Ultraviolet Plasma */
+  --accent-cyan-dim: rgba(168, 0, 255, 0.15);
+  --accent-cyan-glow: rgba(168, 0, 255, 0.6);
+
+  --accent-crimson: #00E5FF;
+  --accent-crimson-glow: rgba(0, 229, 255, 0.6);
+
+  --chrome-grad: linear-gradient(135deg, #FFFFFF 0%, #F43F5E 40%, #881337 75%, #1F0712 100%);
+
+  --border-armor: rgba(255, 0, 60, 0.45);
+  --border-subtle: rgba(168, 0, 255, 0.25);
+  --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 30px var(--accent-primary-dim);
 }
 
+/* --------------------------------------------------------------------------
+   3. BASE RESET & TOKUSATSU ENVIRONMENT
+   -------------------------------------------------------------------------- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans Thai", sans-serif;
-  background-color: var(--bg-color);
+  font-family: 'Chakra Petch', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-void);
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
-  padding: 40px 20px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 50px 20px;
+  position: relative;
+  overflow-x: hidden;
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.4s ease;
+
+  /* Animated Hexagonal & Cybernetic Grid Pattern */
+  background-image: 
+    radial-gradient(circle at 50% 0%, var(--accent-primary-dim) 0%, transparent 60%),
+    radial-gradient(circle at 90% 90%, var(--accent-cyan-dim) 0%, transparent 50%),
+    linear-gradient(rgba(204, 255, 0, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(204, 255, 0, 0.035) 1px, transparent 1px),
+    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.5) 0px, rgba(0, 0, 0, 0.5) 2px, transparent 2px, transparent 6px);
+  background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px, 10px 10px;
+  background-attachment: fixed;
 }
 
+/* Subtle CRT Scanline Overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
+  background-size: 100% 4px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT CONTAINER & TOKUSATSU HUD BRACKETS
+   -------------------------------------------------------------------------- */
 .container {
-  max-width: 680px;
+  max-width: 760px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-
-.card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: var(--card-shadow);
-  transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-}
-
-.hero-card {
-  text-align: center;
-}
-
-.badge {
-  display: inline-block;
-  background: var(--badge-bg);
-  color: var(--badge-text);
-  font-size: 0.85rem;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 9999px;
-  margin-bottom: 14px;
-}
-
-h1 {
-  font-size: 1.85rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--text-primary);
-}
-
-.student-info {
-  font-size: 1.05rem;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-.welcome-msg {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  margin-bottom: 18px;
-}
-
-.status-box {
-  background: var(--status-bg);
-  border: 1px dashed var(--status-border);
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 20px;
-  transition: all 0.3s ease;
-}
-
-.btn-group {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.btn {
-  padding: 11px 24px;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.primary-btn {
-  background: var(--accent);
-  color: #ffffff;
-}
-
-body.dark-mode .primary-btn {
-  color: #0b0f19;
-}
-
-.primary-btn:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-}
-
-.secondary-btn {
-  background: transparent;
-  color: var(--text-primary);
-  border: 1px solid var(--border-color);
-}
-
-.secondary-btn:hover {
-  background: var(--border-color);
-  transform: translateY(-1px);
+  gap: 28px;
+  position: relative;
+  z-index: 2;
 }
 
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 28px;
 }
 
+/* --------------------------------------------------------------------------
+   5. ARMOR-PLATED CARDS (.card)
+   -------------------------------------------------------------------------- */
+.card {
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  clip-path: var(--armor-clip);
+  border: 1px solid var(--border-armor);
+  padding: 34px 32px;
+  box-shadow: var(--card-shadow), inset 0 0 25px var(--accent-primary-dim);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-primary);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 35px var(--accent-primary-dim), inset 0 0 30px var(--accent-primary-dim);
+}
+
+/* Tactical Corner HUD Markers via Card ::before */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-primary) 30%, var(--accent-cyan) 70%, transparent 100%);
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   6. HERO CARD & DRIVER OPERATOR TELEMETRY
+   -------------------------------------------------------------------------- */
+.hero-card {
+  text-align: center;
+  padding: 42px 34px;
+  background: linear-gradient(180deg, rgba(20, 28, 44, 0.95) 0%, rgba(11, 16, 25, 0.95) 100%);
+  border: 1.5px solid var(--accent-primary);
+}
+
+body.dark-mode .hero-card {
+  background: linear-gradient(180deg, rgba(26, 12, 22, 0.95) 0%, rgba(13, 6, 12, 0.95) 100%);
+}
+
+/* Hero Badge */
+.hero-card::after {
+  content: "// KAMEN RIDER SYSTEM // CHASSIS CORE 01 // OPERATIONAL";
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 3px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  margin-top: 14px;
+  opacity: 0.85;
+}
+
+/* Heading H1: Metallic Chrome + Neon Glow */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.15rem;
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  background: var(--chrome-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 16px var(--accent-primary-glow));
+}
+
+/* Student Information (Progrise Key / ID Core Badge) */
+.student-info {
+  font-family: 'Rajdhani', 'Chakra Petch', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-white);
+  margin-bottom: 14px;
+  display: inline-block;
+  padding: 8px 22px;
+  background: var(--bg-card-inset);
+  border: 1px solid var(--border-armor);
+  clip-path: var(--tag-clip);
+  box-shadow: inset 0 0 12px var(--accent-primary-dim);
+}
+
+.student-info strong {
+  color: var(--accent-primary);
+  text-shadow: 0 0 12px var(--accent-primary-glow);
+  font-weight: 800;
+}
+
+/* Welcome Bio Message */
+.welcome-msg {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 620px;
+  margin: 0 auto 24px auto;
+  padding: 14px 20px;
+  background: rgba(0, 229, 255, 0.04);
+  border-left: 3px solid var(--accent-cyan);
+  border-right: 1px solid rgba(0, 229, 255, 0.15);
+  text-align: left;
+}
+
+body.dark-mode .welcome-msg {
+  background: rgba(255, 0, 60, 0.05);
+  border-left-color: var(--accent-primary);
+}
+
+/* --------------------------------------------------------------------------
+   7. STATUS BOX (KAMEN RIDER BELT DIGITAL HUD SCREEN)
+   -------------------------------------------------------------------------- */
+.status-box,
+#status {
+  background: var(--bg-card-inset);
+  border: 1.5px solid var(--accent-primary);
+  padding: 14px 22px;
+  clip-path: var(--tag-clip);
+  font-family: 'Share Tech Mono', 'Orbitron', monospace;
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-primary-glow);
+  box-shadow: 0 0 20px var(--accent-primary-dim), inset 0 0 16px var(--accent-primary-dim);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pulsing LED Beacon */
+.status-box::before,
+#status::before {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 14px var(--accent-primary);
+  animation: henshin-pulse 1.3s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   8. TACTILE DRIVER BUTTONS (.btn-group, .btn)
+   -------------------------------------------------------------------------- */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Primary Button: Say Hello (Henshin Trigger / Driver Ignition) */
+.primary-btn,
+#helloBtn {
+  clip-path: var(--btn-clip-primary);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-primary-alt) 100%);
+  color: #05080E;
+  box-shadow: 0 0 25px var(--accent-primary-glow), inset 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.primary-btn::after,
+#helloBtn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.75), transparent);
+  transform: skewX(-25deg);
+  transition: none;
+}
+
+.primary-btn:hover,
+#helloBtn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 40px var(--accent-primary-glow), 0 0 70px var(--accent-primary-dim);
+  filter: brightness(1.1);
+}
+
+.primary-btn:hover::after,
+#helloBtn:hover::after {
+  animation: light-sweep 0.75s ease-in-out infinite;
+}
+
+.primary-btn:active,
+#helloBtn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* Secondary Button: Dark Mode (Form Shift Switch) */
+.secondary-btn,
+#themeToggleBtn {
+  clip-path: var(--btn-clip-secondary);
+  background: var(--bg-card-inset);
+  color: var(--accent-cyan);
+  border: 1.5px solid var(--accent-cyan);
+  box-shadow: 0 0 16px var(--accent-cyan-dim), inset 0 0 12px var(--accent-cyan-dim);
+}
+
+body.dark-mode .secondary-btn,
+body.dark-mode #themeToggleBtn {
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 16px var(--accent-primary-dim), inset 0 0 12px var(--accent-primary-dim);
+}
+
+.secondary-btn:hover,
+#themeToggleBtn:hover {
+  background: var(--accent-cyan);
+  color: #05080E;
+  box-shadow: 0 0 35px var(--accent-cyan-glow);
+  transform: translateY(-2px) scale(1.03);
+}
+
+body.dark-mode .secondary-btn:hover,
+body.dark-mode #themeToggleBtn:hover {
+  background: var(--accent-primary);
+  color: #05080E;
+  box-shadow: 0 0 35px var(--accent-primary-glow);
+}
+
+.secondary-btn:active,
+#themeToggleBtn:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* --------------------------------------------------------------------------
+   9. CONTENT SECTIONS (#about, #skills, #contact)
+   -------------------------------------------------------------------------- */
 .card-header {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
 }
 
-.card-header .icon {
-  font-size: 1.4rem;
+/* High-Tech Heading H2 */
+h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.card-header h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
+h2::before {
+  content: "? ";
+  color: var(--accent-primary);
+  font-size: 0.95rem;
+  text-shadow: 0 0 10px var(--accent-primary-glow);
+}
+
+/* Section Technical Archive Annotations */
+#about::before {
+  content: "// ARCHIVE FILE 01 // OPERATOR BIO-TELEMETRY";
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.74rem;
+  letter-spacing: 2.5px;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
+}
+
+#skills::before {
+  content: "// ARCHIVE FILE 02 // COMBAT SYSTEM AND MODULE ARSENAL";
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.74rem;
+  letter-spacing: 2.5px;
+  color: var(--accent-primary);
+  margin-bottom: 8px;
+}
+
+#contact::before {
+  content: "// ARCHIVE FILE 03 // SATELLITE COMMS AND TELEMETRY";
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.74rem;
+  letter-spacing: 2.5px;
+  color: var(--accent-cyan);
+  margin-bottom: 8px;
 }
 
 .content-card p {
-  color: var(--text-secondary);
-  font-size: 0.96rem;
-  line-height: 1.7;
+  color: #D1D9E6;
+  font-size: 1.02rem;
+  line-height: 1.8;
 }
 
+.content-card p strong {
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-primary-dim);
+}
+
+/* --------------------------------------------------------------------------
+   10. SKILLS GRID (PROGRISE KEY / MODULE CARTRIDGES)
+   -------------------------------------------------------------------------- */
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .skill-tag {
-  background: var(--tag-bg);
-  color: var(--tag-text);
-  border: 1px solid var(--border-color);
-  padding: 7px 15px;
-  border-radius: 8px;
-  font-size: 0.88rem;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  background: linear-gradient(135deg, rgba(20, 27, 40, 0.9) 0%, rgba(10, 15, 23, 0.9) 100%);
+  border: 1px solid var(--border-subtle);
+  border-left: 3.5px solid var(--accent-primary);
+  clip-path: var(--tag-clip);
+  padding: 12px 18px;
+  font-family: 'Rajdhani', 'Chakra Petch', sans-serif;
+  font-weight: 700;
+  font-size: 0.96rem;
+  letter-spacing: 1.5px;
+  color: #F1F5F9;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.skill-tag::before {
+  content: "[MOD]";
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent-cyan);
 }
 
 .skill-tag:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  transform: translateX(5px);
+  border-color: var(--accent-primary);
+  background: linear-gradient(135deg, rgba(28, 38, 56, 0.95) 0%, rgba(16, 22, 34, 0.95) 100%);
+  box-shadow: 0 0 20px var(--accent-primary-dim);
+  color: var(--accent-primary);
 }
 
+/* --------------------------------------------------------------------------
+   11. CONTACT LIST (SATELLITE TRANSMISSION CHANNELS)
+   -------------------------------------------------------------------------- */
 .contact-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .contact-list li {
+  background: var(--bg-card-inset);
+  border: 1px solid var(--border-subtle);
+  border-left: 3.5px solid var(--accent-cyan);
+  clip-path: var(--bar-clip);
+  padding: 14px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   gap: 10px;
-  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.contact-list li:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 22px var(--accent-cyan-dim);
+  transform: translateX(4px);
+  background: rgba(0, 229, 255, 0.08);
 }
 
 .contact-list .label {
-  font-weight: 600;
-  min-width: 110px;
-  color: var(--text-primary);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
 }
 
 .contact-list a {
-  color: var(--accent);
+  color: var(--text-white);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  font-family: 'Share Tech Mono', 'Chakra Petch', monospace;
+  font-size: 0.98rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .contact-list a:hover {
-  text-decoration: underline;
+  color: var(--accent-primary);
+  text-shadow: 0 0 10px var(--accent-primary-glow);
 }
 
-footer {
-  text-align: center;
-  color: var(--text-secondary);
-  font-size: 0.85rem;
-  padding: 10px 0;
-}
-
-/* Toast Notification */
+/* --------------------------------------------------------------------------
+   12. HOLOGRAPHIC TOAST NOTIFICATION (#toast)
+   -------------------------------------------------------------------------- */
 .toast-notification {
   position: fixed;
-  top: -120px;
+  top: -140px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--card-bg);
-  color: var(--text-primary);
-  border: 2px solid var(--accent);
-  padding: 16px 28px;
-  border-radius: 14px;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
-  font-size: 1rem;
-  font-weight: 500;
-  z-index: 9999;
+  background: rgba(9, 13, 20, 0.96);
+  border: 2px solid var(--accent-primary);
+  clip-path: var(--armor-clip);
+  padding: 20px 36px;
+  border-radius: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px var(--accent-primary-glow), inset 0 0 25px var(--accent-primary-dim);
+  font-family: 'Orbitron', 'Chakra Petch', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--text-white);
+  z-index: 99999;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 6px;
   pointer-events: none;
   opacity: 0;
-  transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+  transition: top 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.35s ease;
+  min-width: 320px;
+  text-align: center;
+}
+
+/* Hologram Warning Stripe Header */
+.toast-notification::before {
+  content: "[AUTHORISE // PROGRISE SYSTEM ENGAGED]";
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 3px;
+  color: var(--accent-primary);
 }
 
 .toast-notification.show {
-  top: 25px;
+  top: 30px;
   opacity: 1;
+}
+
+/* --------------------------------------------------------------------------
+   13. FOOTER TELEMETRY
+   -------------------------------------------------------------------------- */
+footer {
+  text-align: center;
+  padding: 30px 10px 15px 10px;
+  border-top: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+footer p {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+footer::after {
+  content: "[ CLASSIFIED MECHA SYSTEM // DEPLOYED VIA GITHUB ACTIONS PIPELINE ]";
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 3.5px;
+  color: var(--accent-primary);
+  margin-top: 8px;
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   14. ANIMATIONS (HENSHIN PULSE AND LASER SWEEPS)
+   -------------------------------------------------------------------------- */
+@keyframes henshin-pulse {
+  0% {
+    box-shadow: 0 0 6px var(--accent-primary);
+    opacity: 0.7;
+  }
+  50% {
+    box-shadow: 0 0 20px var(--accent-primary), 0 0 35px var(--accent-primary-glow);
+    opacity: 1;
+  }
+  100% {
+    box-shadow: 0 0 6px var(--accent-primary);
+    opacity: 0.7;
+  }
+}
+
+@keyframes light-sweep {
+  0% {
+    left: -150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   15. RESPONSIVE OPTIMIZATION
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  body {
+    padding: 30px 14px;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+    letter-spacing: 2px;
+  }
+
+  .card {
+    padding: 24px 20px;
+  }
+
+  .hero-card {
+    padding: 32px 20px;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 13px 20px;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-list li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
