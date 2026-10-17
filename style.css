@@ -248,3 +248,31 @@ footer {
   font-size: 0.85rem;
   padding: 10px 0;
 }
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--accent);
+  padding: 16px 28px;
+  border-radius: 14px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+  font-size: 1rem;
+  font-weight: 500;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  transition: top 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+.toast-notification.show {
+  top: 25px;
+  opacity: 1;
+}
